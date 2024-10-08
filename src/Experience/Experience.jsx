@@ -19,7 +19,7 @@ function Experience() {
 
     return (
         <>
-            <orbitControls args={ [ camera, gl.domElement ] } />
+            {/* <orbitControls args={ [ camera, gl.domElement ] } /> */}
             {/* <mesh>
                 <torusKnotGeometry />
                 <meshNormalMaterial />
