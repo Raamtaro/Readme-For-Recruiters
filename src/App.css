@@ -1,12 +1,14 @@
 #root {
+  position: relative;
+  /* max-width: 1280px; */
+  margin: 0;
   
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
 }
 
 .landing-section, .projects-section, .contact-section {
   min-height: 100vh;
+  
   margin-bottom: 20rem;
+  
 }
 

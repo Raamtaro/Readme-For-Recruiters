@@ -7,6 +7,7 @@ function Projects() {
      */
     return (
         <section className='projects-section'>
+            Projects
             {/* Title (Displays the project Name*/}
             {/* Horizontal Scroll (------->) Area 1 for Thumbnails (or a Mesh) 
             On Click ---> Modal Item pops up with Description of project and Live Link/Source Link

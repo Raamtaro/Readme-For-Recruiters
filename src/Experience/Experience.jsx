@@ -3,6 +3,12 @@ import React from 'react'
 import { useThree, extend, useFrame } from '@react-three/fiber'
 import { OrbitControls } from 'three/examples/jsm/Addons.js'
 
+//Canvas output setup
+import * as THREE from 'three'
+
+//Components
+import Model from './Model/Model'
+
 // extend({ OrbitControls: OrbitControls }) //can be rewritten as below because name is same
 extend({ OrbitControls })
 function Experience() {
@@ -14,10 +20,12 @@ function Experience() {
     return (
         <>
             <orbitControls args={ [ camera, gl.domElement ] } />
-            <mesh>
+            {/* <mesh>
                 <torusKnotGeometry />
                 <meshNormalMaterial />
-            </mesh>
+            </mesh> */}
+            <Model />
+
         </>
 
     )
