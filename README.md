@@ -1,7 +1,7 @@
 # My Personal Portfolio
 
 
-**Intro**
+**Intro:**
 
 Hey there! This is a showcase of my skillset. I'm building this portfolio using React, and this is purely a frontend design - so no express, SQL database, etc.
 

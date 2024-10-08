@@ -1,0 +1,23 @@
+nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+
+    padding-right: 2rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    z-index: 10;
+
+
+}
+
+span {
+    text-transform: uppercase;
+}
+
+.title {
+    font-size: .75rem;
+}
