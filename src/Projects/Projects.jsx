@@ -1,4 +1,9 @@
-import React from 'react'
+import React, {useState, useEffect, useRef} from 'react'
+
+import Title from './Title/Title'
+import SkillCard from './SkillCard/SkillCard'
+import ModalInfo from './ModalInfo/ModalInfo'
+
 
 function Projects() {
     /**
@@ -13,7 +18,7 @@ function Projects() {
             On Click ---> Modal Item pops up with Description of project and Live Link/Source Link
             */}
             {/* Horizontal Scroll (<-------) Area 2 for Tech Icons */}
-
+            
             {/* 
                 In Total:
                 1. Title.jsx x # of Projects
