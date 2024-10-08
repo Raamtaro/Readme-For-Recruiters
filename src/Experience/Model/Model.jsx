@@ -6,7 +6,7 @@ function Model() {
     const model = useGLTF('./translatedMask.glb')
     return (
         <>
-            <primitive object={model.scene} />
+            <primitive object={model.scene} scale={0.5}/>
         </>
     )
 }
