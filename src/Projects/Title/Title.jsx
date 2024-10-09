@@ -1,8 +1,8 @@
 import React from 'react'
 
-function Title() {
+function Title({...props}) {
   return (
-    <div>Title</div>
+    <div className="hello">Project Title</div>
   )
 }
 

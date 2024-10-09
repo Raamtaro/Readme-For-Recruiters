@@ -15,7 +15,7 @@ function Experience() {
     /**
      * This component will set up meshes within the landing page scene as well as control animations.
      */
-    const {camera, gl} = useThree()
+    const {camera, gl, viewport, size} = useThree()
 
     return (
         <>

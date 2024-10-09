@@ -26,7 +26,7 @@ function Model() {
     }, [materialRef])
 
     useFrame((state, delta) => {
-        meshRef.current.rotation.y += delta * 0.25
+        meshRef.current.rotation.y += delta * 0.05
     })
 
 

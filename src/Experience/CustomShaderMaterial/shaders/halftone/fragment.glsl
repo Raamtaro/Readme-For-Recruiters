@@ -45,7 +45,7 @@ void main()
     color = halftone(
         color,
         uShadowRepetitions,
-        vec3(-1.0, -2.0, -0.75),
+        vec3(-1.0, -3.0, -0.75),
         -0.8,
         1.5, 
         uShadowColor,
@@ -55,7 +55,7 @@ void main()
     color = halftone(
         color,
         uLightRepetitions,
-        vec3(1.0, 2.0, 0.75),
+        vec3(1.0, 1.25, 0.75),
         0.5,
         1.5,
         uLightColor,

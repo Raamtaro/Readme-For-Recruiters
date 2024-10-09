@@ -6,6 +6,9 @@ import ModalInfo from './ModalInfo/ModalInfo'
 
 import data from '../utils/data.js'
 
+//styles
+import './styles/Projects.css'
+
 
 function Projects() {
     /**
@@ -17,20 +20,15 @@ function Projects() {
 
     return (
         <section className='projects-section'>
-            Projects
+            
             {/* Title (Displays the project Name*/}
-            {/* Horizontal Scroll (------->) Area 1 for Thumbnails (or a Mesh) 
+
+            {/* Horizontal Scroll (------->) for Thumbnails (or a Mesh) 
             On Click ---> Modal Item pops up with Description of project and Live Link/Source Link
             */}
-            {/* Horizontal Scroll (<-------) Area 2 for Tech Icons */}
-            
-            {/* 
-                In Total:
-                1. Title.jsx x # of Projects
-                2. ProjectMesh.jsx (Contained in the first scrollable area) x # of projects
-                3. ModalDescription.jsx x # of Projects
-                4. Tech List (Dynamically sets up list of tech items in a single row)
-            */}
+            <section className="horizontal-scroll-section">
+                Horizontal Scroll
+            </section>
 
             
         </section>
