@@ -1,6 +1,6 @@
 import React from 'react'
 
-function SkillCard() {
+function SkillCard({...props}) {
   return (
     <div>SkillCard</div>
   )

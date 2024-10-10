@@ -17,7 +17,7 @@ const HalftoneShaderMaterial = forwardRef((props, ref) => {
                     uResolution: new THREE.Uniform(new THREE.Vector2(window.innerWidth * Math.min(window.devicePixelRatio, 2), window.innerHeight * Math.min(window.devicePixelRatio, 2))),
                     uShadowRepetitions: new THREE.Uniform(512),
                     uShadowColor: new THREE.Uniform(new THREE.Color('#B70B65')),
-                    uLightRepetitions: new THREE.Uniform(256),
+                    uLightRepetitions: new THREE.Uniform(512),
                     uLightColor: new THREE.Uniform(new THREE.Color('#00F593'))
                 },
                 vertexShader: vertexShader,

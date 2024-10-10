@@ -1,5 +1,7 @@
 import React, {useEffect, useState, useRef} from 'react'
 
+import * as THREE from 'three'
+
 import { useGLTF } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 
@@ -11,8 +13,14 @@ function Model() {
     const model = useGLTF('./translatedMask.glb')
     const geometry = model.scene.children[0].geometry
 
+    console.log(geometry)
+
     const materialRef = useRef()
     const meshRef = useRef()
+
+    useEffect(()=> {
+        geometry.setAttribute('aColor', new THREE.BufferAttribute(geometry.attributes._vertexcolor.array, 4))
+    }, [geometry, meshRef])
 
     useEffect(()=> {
         const handleResize = () => {
