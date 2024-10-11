@@ -1,7 +1,6 @@
 import React, {useState, useEffect, useRef} from 'react'
 
-import Title from './Title/Title'
-import SkillCard from './SkillCard/SkillCard'
+import ProjectCard from './ProjectCard/ProjectCard.jsx'
 import ModalInfo from './ModalInfo/ModalInfo'
 
 import data from '../utils/data.js'
@@ -21,7 +20,11 @@ function Projects() {
     return (
         <section className='projects-section'>
             
-            {/* Title (Displays the project Name*/}
+            {
+                data.map((project) => (
+                    <ProjectCard key={project.id} project={project} />
+                ))
+            }
 
             {/* Horizontal Scroll (------->) for Thumbnails (or a Mesh) 
             On Click ---> Modal Item pops up with Description of project and Live Link/Source Link

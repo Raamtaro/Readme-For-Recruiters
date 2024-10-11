@@ -9,6 +9,8 @@
 
     max-width: 275px;
 
-    background-color: #141414;
-    opacity: .75;
+    color: rgb(230, 251, 243);
+
+    mix-blend-mode: difference;
+    
 }
