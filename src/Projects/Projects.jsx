@@ -9,11 +9,7 @@ import { useGSAP } from "@gsap/react";
     
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-
 gsap.registerPlugin(useGSAP,ScrollTrigger);
-
-
-
 
 //styles
 import './styles/Projects.css'
@@ -25,10 +21,31 @@ function Projects() {
      * I think it should also compile each child component and we should have this component solely handle gsap logic for horizontal scroll fnctlty
      */
 
+    const projectContainer = useRef()
+
+
+    useGSAP(()=> {
+        // console.log('running') //Verification
+        const projectCards = gsap.utils.toArray(projectContainer.current.children)
+        console.log(projectCards)
+
+        gsap.to(
+            projectCards,
+            {
+                xPercent: -100 * (projectCards.length - 1),
+                scrollTrigger: {
+                    trigger: projectContainer.current,
+                    pin: true,
+                    scrub: 1,
+                }
+            }
+        )
+
+    }, {scope: projectContainer})
 
 
     return (
-        <section className='projects-section'>
+        <section ref={projectContainer} className='projects-section'>
             
             {
                 data.map((project) => (

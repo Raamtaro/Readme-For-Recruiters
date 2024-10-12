@@ -4,6 +4,8 @@
     /* mix-blend-mode: difference; */
     display: flex;
     overflow-x: hidden;
+
+    flex-shrink: 0;
 }
 
 
