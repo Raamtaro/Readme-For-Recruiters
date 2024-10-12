@@ -4,6 +4,16 @@ import ProjectCard from './ProjectCard/ProjectCard.jsx'
 import ModalInfo from './ModalInfo/ModalInfo'
 
 import data from '../utils/data.js'
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
+    
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+
+gsap.registerPlugin(useGSAP,ScrollTrigger);
+
+
+
 
 //styles
 import './styles/Projects.css'
@@ -29,9 +39,6 @@ function Projects() {
             {/* Horizontal Scroll (------->) for Thumbnails (or a Mesh) 
             On Click ---> Modal Item pops up with Description of project and Live Link/Source Link
             */}
-            <section className="horizontal-scroll-section">
-                Horizontal Scroll
-            </section>
 
             
         </section>

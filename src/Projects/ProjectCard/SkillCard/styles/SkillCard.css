@@ -1,4 +1,7 @@
-
+.skills-container {
+    display: flex;
+    gap: .5rem;
+}
 
 img {
     height: 30px;

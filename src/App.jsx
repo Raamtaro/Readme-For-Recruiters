@@ -13,7 +13,7 @@ function App() {
   return (
     <>
       <Canvas
-        style={{ width: '100%', height: '100vh', margin: 0, padding: 0, position: "fixed", zIndex: -1}}
+        style={{ width: '100%', height: '100vh', margin: 0, padding: 0, position: "fixed", zIndex: 0}}
         gl={(canvas) => {
         const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));

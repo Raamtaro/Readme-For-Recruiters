@@ -8,6 +8,7 @@ import * as THREE from 'three'
 
 //Components
 import Model from './Model/Model'
+import AstroWorldModel from './Model/AstroWorldModel'
 
 // extend({ OrbitControls: OrbitControls }) //can be rewritten as below because name is same
 extend({ OrbitControls })
@@ -24,7 +25,8 @@ function Experience() {
                 <torusKnotGeometry />
                 <meshNormalMaterial />
             </mesh> */}
-            <Model />
+            {/* <Model /> */}
+            {/* <AstroWorldModel /> */}
 
         </>
 

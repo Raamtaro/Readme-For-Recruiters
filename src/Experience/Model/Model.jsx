@@ -13,13 +13,13 @@ function Model() {
     const model = useGLTF('./translatedMask.glb')
     const geometry = model.scene.children[0].geometry
 
-    console.log(geometry)
+    console.log(model)
 
     const materialRef = useRef()
     const meshRef = useRef()
 
     useEffect(()=> {
-        geometry.setAttribute('aColor', new THREE.BufferAttribute(geometry.attributes._vertexcolor.array, 4))
+        // geometry.setAttribute('aColor', new THREE.BufferAttribute(geometry.attributes._vertexcolor.array, 4))
     }, [geometry, meshRef])
 
     useEffect(()=> {
@@ -40,18 +40,21 @@ function Model() {
 
     return (
         <>
-        <mesh
-            ref={meshRef}
-            geometry={geometry}
-            scale={0.5}
-            position-z={-1}
-            position-y={-1.75}
-        >
-            <HalftoneShaderMaterial
-                ref={materialRef}
-             />
-        </mesh>
-            
+            <mesh
+                ref={meshRef}
+                geometry={geometry}
+                scale={0.5}
+                position-z={-1}
+                position-y={-1.75}
+            >
+                <HalftoneShaderMaterial
+                    ref={materialRef}
+                />
+            </mesh>
+            {/* <mesh>
+                <primitive object={model.scene} />
+
+            </mesh> */}
         </>
     )
 }

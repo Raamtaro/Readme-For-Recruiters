@@ -1,5 +1,13 @@
 .projects-section {
-    background-color: #D6531B;
+    /* background-color: #D6531B; */
     opacity: 0.9;
     /* mix-blend-mode: difference; */
+    display: flex;
+    overflow-x: hidden;
+}
+
+
+
+.projects-section>* {
+    font-family: 'Le murmure', sans-serif;
 }

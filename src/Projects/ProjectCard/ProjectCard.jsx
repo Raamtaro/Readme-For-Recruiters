@@ -4,6 +4,9 @@ import React from 'react'
 import Title from './Title/Title.jsx'
 import SkillCard from './SkillCard/SkillCard.jsx'
 
+//styles
+import './styles/ProjectCard.css'
+
 function ProjectCard({project}) {
   return (
     <div className="project-card">
