@@ -6,12 +6,43 @@
   }
 
 .project-link {
+    position: relative;
+    display: inline-block;
     font-family: 'Le murmure', sans-serif;
     font-size: 2.75rem;
 
     margin: 0;
 
+
     color: rgb(230, 251, 243);
 
+    overflow: hidden;
+    cursor: pointer;
+
+    
+
+    
     /* mix-blend-mode: difference; */
 }
+
+.title-text {
+    display: inline-block;
+    transition: color 0.3s ease;
+}
+
+.underline {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 1px;
+    width: 100%;
+    background-color: rgb(230, 251, 243);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s ease-out;
+}
+
+.project-link:hover .underline {
+    transform: scaleX(1);
+}
+
