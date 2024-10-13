@@ -8,6 +8,8 @@ import Experience from './Experience/Experience'
 import { Canvas } from '@react-three/fiber'
 import * as THREE from 'three'
 
+import { PerspectiveCamera } from '@react-three/drei'
+
 function App() {
 
   return (
@@ -23,6 +25,13 @@ function App() {
         renderer.physicallyCorrectLights = true;
         return renderer;
         }}>
+      <PerspectiveCamera
+        makeDefault              // Makes this camera the default camera
+        position={[0, 0, 6]}     // Set camera position
+        fov={35}                 // Field of View
+        near={0.1}
+        far={100}
+      />
         <Experience />
       </Canvas>
       

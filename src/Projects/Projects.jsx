@@ -36,7 +36,7 @@ function Projects() {
                 scrollTrigger: {
                     trigger: projectContainer.current,
                     pin: true,
-                    scrub: 1,
+                    scrub: .5,
                 }
             }
         )

@@ -2,13 +2,14 @@ import React from 'react'
 //Three JS stuff
 import { useThree, extend, useFrame } from '@react-three/fiber'
 import { OrbitControls } from 'three/examples/jsm/Addons.js'
+import Particles from './Particles/Particles'
 
 //Canvas output setup
 import * as THREE from 'three'
 
 //Components
 import Model from './Model/Model'
-import AstroWorldModel from './Model/AstroWorldModel'
+
 
 // extend({ OrbitControls: OrbitControls }) //can be rewritten as below because name is same
 extend({ OrbitControls })
@@ -26,7 +27,8 @@ function Experience() {
                 <meshNormalMaterial />
             </mesh> */}
             {/* <Model /> */}
-            {/* <AstroWorldModel /> */}
+            <Particles />
+
 
         </>
 
