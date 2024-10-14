@@ -36,3 +36,9 @@ h1 {
 }
 
 
+@font-face {
+  font-family: 'Le murmure';
+  src: url('./Projects/ProjectCard/Title/styles/fonts/Le-Murmure.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}

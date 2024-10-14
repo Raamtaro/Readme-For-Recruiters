@@ -27,7 +27,7 @@ function Projects() {
     useGSAP(()=> {
         // console.log('running') //Verification
         const projectCards = gsap.utils.toArray(projectContainer.current.children)
-        console.log(projectCards)
+        // console.log(projectCards)
 
         gsap.to(
             projectCards,

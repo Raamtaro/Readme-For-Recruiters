@@ -5,10 +5,12 @@
   
 }
 
-.landing-section, .projects-section, .contact-section {
+.landing-section, .projects-section{
   min-height: 100vh;
   
   margin-bottom: 20rem;
+
+  /* mix-blend-mode: exclusion; */
   
 }
 

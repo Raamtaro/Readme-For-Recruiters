@@ -1,18 +1,22 @@
-import React, {useMemo, useEffect} from 'react'
+import React, {useMemo, useEffect, useRef} from 'react'
+
+import { useFrame } from '@react-three/fiber'
 
 import * as THREE from 'three'
 
 function Particles() {
 
+    const particlesRef = useRef()
+
 
     let positions = useMemo(()=> {
-        const particlesCount = 200
+        const particlesCount = 2000
         const positions = new Float32Array(particlesCount * 3)
-        const objectsDistance = 5
+        const objectsDistance = 10
 
         for (let i = 0; i < particlesCount; i++) {
             positions[i * 3 + 0] = (Math.random() - 0.5) * 10
-            positions[i * 3 + 1] = objectsDistance * (0.5 - Math.random() * 3)
+            positions[i * 3 + 1] = objectsDistance * (0.5 - Math.random() * 9)
             positions[i * 3 + 2] = (Math.random() - 0.5) * 10
         
         }
@@ -20,13 +24,17 @@ function Particles() {
         return positions
     })
 
+    // useFrame((state, delta)=> {
+    //     particlesRef.current.rotation.y += delta * 0.05
+    // })
+
     return (
-        <points>
+        <points ref={particlesRef}>
             <bufferGeometry attach="geometry">
                 <bufferAttribute 
                     attach="attributes-position"
                     array={positions}
-                    count={200}
+                    count={2000}
                     itemSize={3}
                 />
             </bufferGeometry>

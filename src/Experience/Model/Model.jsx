@@ -9,11 +9,11 @@ import HalftoneShaderMaterial from '../CustomShaderMaterial/HalftoneShaderMateri
 import { Clock } from 'three'
 
 
-function Model() {
+function Model( {innerRef}) {
     const model = useGLTF('./translatedMask.glb')
     const geometry = model.scene.children[0].geometry
 
-    console.log(model)
+    // console.log(model)
 
     const materialRef = useRef()
     const meshRef = useRef()
@@ -33,19 +33,19 @@ function Model() {
         }
     }, [materialRef])
 
-    useFrame((state, delta) => {
-        meshRef.current.rotation.y += delta * 0.05
-    })
+    // useFrame((state, delta) => {
+    //     meshRef.current.rotation.y += delta * 0.05
+    // })
 
 
     return (
         <>
             <mesh
-                ref={meshRef}
+                ref={innerRef}
                 geometry={geometry}
-                scale={0.5}
-                position-z={-1}
-                position-y={-1.75}
+                scale={0.195}
+                position-z={0}
+                position-y={-.45}
             >
                 <HalftoneShaderMaterial
                     ref={materialRef}
