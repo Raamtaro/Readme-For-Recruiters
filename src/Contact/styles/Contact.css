@@ -1,3 +1,25 @@
 .contact-section {
     min-height: 75vh;
+    padding: 2rem;
+
+    font-family: 'Le murmure', sans-serif;
+    font-size: 2rem;
+    /* text-transform: uppercase; */
+    letter-spacing: .2rem;
+    display: flex;
+    flex-direction: column;
+
+    /* place-items: center; */
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 2rem;
+
+
+
 }
+
+.contact-section>*, .contact-section-group>* {
+    width: 4rem;
+    height: 4rem;
+}
+

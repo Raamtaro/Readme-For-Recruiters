@@ -1,5 +1,6 @@
 import './App.css'
 import Landing from './Landing/Landing'
+import Skills from './Skills/Skills'
 import Projects from './Projects/Projects'
 import Contact from './Contact/Contact'
 import Experience from './Experience/Experience'
@@ -30,6 +31,7 @@ function App() {
         </Canvas>
         
         <Landing />
+        <Skills />
         <Projects />
         <Contact />
       </ReactLenis>

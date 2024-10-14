@@ -1,0 +1,69 @@
+.skills-section {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    
+
+}
+
+ul {
+    list-style-type: none;
+    margin:0;
+    padding: 0;
+    text-indent: 0;
+}
+
+li>svg {
+    width: 3rem;
+    height: 3rem;
+    
+}
+
+.skill-section-item {
+    padding-bottom: 4rem;
+
+}
+
+
+
+.skill-section-item>h3 {
+    font-family: 'Le murmure', sans-serif;
+    font-size: 2.25rem;
+    letter-spacing: .2rem;
+    text-align: center;
+
+}
+
+
+
+
+
+.skill-section-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    
+}
+
+.row {
+    display: flex;
+    gap: 3rem;
+}
+
+.skill-section-list-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+
+}
+
+li>span {
+    /* display: none; */
+    align-self: center;
+    width: 3rem;
+    height: 3rem;
+    text-align: center;
+}
