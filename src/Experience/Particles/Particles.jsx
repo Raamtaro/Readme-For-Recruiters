@@ -10,7 +10,7 @@ function Particles() {
 
 
     let positions = useMemo(()=> {
-        const particlesCount = 2000
+        const particlesCount = 200
         const positions = new Float32Array(particlesCount * 3)
         const objectsDistance = 10
 
@@ -34,7 +34,7 @@ function Particles() {
                 <bufferAttribute 
                     attach="attributes-position"
                     array={positions}
-                    count={2000}
+                    count={200}
                     itemSize={3}
                 />
             </bufferGeometry>
@@ -42,7 +42,7 @@ function Particles() {
                 attach="material"
                 
                 color={0xe6fbf3}
-                size={0.06}
+                size={0.1}
                 sizeAttenuation 
                 
             />

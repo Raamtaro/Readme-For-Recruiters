@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useRef} from 'react'
+import React, {useEffect, useState, useRef, useMemo} from 'react'
 
 import * as THREE from 'three'
 
@@ -7,6 +7,7 @@ import { useFrame } from '@react-three/fiber'
 
 import HalftoneShaderMaterial from '../CustomShaderMaterial/HalftoneShaderMaterial'
 import { Clock } from 'three'
+import CustomShaderMaterial from 'three-custom-shader-material'
 
 
 function Model( {innerRef}) {
@@ -17,6 +18,8 @@ function Model( {innerRef}) {
 
     const materialRef = useRef()
     const meshRef = useRef()
+
+    //Materials - depth and custom. Planning to transfer the halftone shader material on top of the color processing.
 
     useEffect(()=> {
         // geometry.setAttribute('aColor', new THREE.BufferAttribute(geometry.attributes._vertexcolor.array, 4))
@@ -47,9 +50,9 @@ function Model( {innerRef}) {
                 position-z={0}
                 position-y={-.45}
             >
-                <HalftoneShaderMaterial
-                    ref={materialRef}
-                />
+            <HalftoneShaderMaterial
+                ref={materialRef}
+            />
             </mesh>
             {/* <mesh>
                 <primitive object={model.scene} />
