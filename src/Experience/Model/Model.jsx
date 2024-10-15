@@ -46,7 +46,7 @@ function Model( {innerRef}) {
             <mesh
                 ref={innerRef}
                 geometry={geometry}
-                scale={0.195}
+                scale={0.23}
                 position-z={0}
                 position-y={-.45}
             >

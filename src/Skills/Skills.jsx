@@ -30,6 +30,7 @@ function Skills() {
      */
   return (
     <section className='skills-section'> 
+        
         <div className="skill-section-item">
             <h3>Front End</h3>
             <ul className="skill-section-list">
