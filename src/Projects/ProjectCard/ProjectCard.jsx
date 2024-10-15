@@ -8,9 +8,10 @@ import SkillCard from './SkillCard/SkillCard.jsx'
 import './styles/ProjectCard.css'
 
 function ProjectCard({project}) {
+  
   return (
     <div className="project-card">
-        <Title title={project.title} />
+        <Title title={project.title} skills={project.skills} />
         <SkillCard skills={project.skills} />
     </div>
   )
