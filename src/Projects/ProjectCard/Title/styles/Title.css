@@ -47,15 +47,3 @@
 .project-link:hover .underline {
     transform: scaleX(1);
 }
-
-/* .ReactModal__Overlay {
-    background-color: rgb(20, 20, 20);
-} */
-
-.ReactModal__Content {
-    background-color: rgb(20, 20, 20);
-}
-
-.ReactModalPortal {
-    background: rgb(20, 20, 20);
-}
