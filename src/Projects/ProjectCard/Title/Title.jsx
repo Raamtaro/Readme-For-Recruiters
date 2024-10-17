@@ -6,7 +6,6 @@ import './styles/Title.css'
 function Title({title, skills, description}) {
   const [showModal, setShowModal] = useState(false) 
 
-
   const handleOpen = () => {
     setShowModal(true)
   }
@@ -15,12 +14,9 @@ function Title({title, skills, description}) {
     setShowModal(false)
   }
 
-  // console.log(skills)
-
 
   return (
-    <>
-      
+    <>      
       <h2 className="project-link">
         <span className="title-text" onClick={handleOpen}>{title}</span>
         <span className="underline"></span>
@@ -42,23 +38,23 @@ function Title({title, skills, description}) {
             right: 0,
             bottom: 0,
             left: 0,
-            zIndex: 10,
+            zIndex: 99,
             width: '100vw',
             overflowY: 'auto',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
-            backdropFilter: 'blur(40px)',
-            transitionDuration: '300ms',
-            transitionTimingFunction: 'ease-out',       
+            backdropFilter: 'blur(.5rem)',
+      
           }}
         >
           <DialogTitle>
             Project Description
           </DialogTitle>
           <div className="close-modal" onClick={handleClose}>X</div>
-          <figure>
+
+          <figure className='project-description-figure'>
             <figcaption>
               Skills List
             </figcaption>
@@ -68,27 +64,12 @@ function Title({title, skills, description}) {
               ))}
             </ul>
           </figure>
+          
+          <p>
+            {description}
+          </p>
         </DialogPanel>
       </Dialog>
-
-      {/* <Modal 
-        isOpen={showModal}
-        ariaHideApp={false}
-        onRequestClose={handleClose}
-        contentLabel="Project Description Modal"
-        
-      > 
-        <figure>
-          <figcaption>
-            Skills List
-          </figcaption>
-          <ul>
-            {skills.map((skill) => (
-              <li key={skill}>{skill}</li>
-            ))}
-          </ul>
-        </figure>
-      </Modal> */}
     </>
   )
 }

@@ -2,7 +2,7 @@
     padding: 2rem;
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
+    align-items: center;
     
 
 }
@@ -22,6 +22,7 @@ li>svg {
 
 .skill-section-item {
     padding-bottom: 4rem;
+    width: 400px;
 
 }
 
@@ -35,16 +36,11 @@ li>svg {
 
 }
 
-
-
-
-
 .skill-section-list {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 3rem;
-    
 }
 
 .row {
@@ -53,6 +49,7 @@ li>svg {
 }
 
 .skill-section-list-item {
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -67,3 +64,19 @@ li>span {
     height: 3rem;
     text-align: center;
 }
+
+/* 
+For now, keeping 1024 as the breakpoint because it works with the current design. 
+ */
+
+ @media only screen and (min-width: 1024px) {
+
+    .skills-section {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+ }
+
