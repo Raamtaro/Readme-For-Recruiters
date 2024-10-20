@@ -5,7 +5,7 @@ const data = [
         thumbnail: "thumbnail",
         model: "gltf path",
         description: "This is my portfolio project, built with the React JS and React Three Fiber libraries.",
-        links: {github: 'https://github.com/Raamtaro/Readme-For-Recruiters', live: 'Netlify Link coming soon.'},
+        links: {github: 'https://github.com/Raamtaro/Readme-For-Recruiters', live: ''},
         skills: ['javascript', 'react', 'three js', 'webGL']
     },
     {
@@ -14,7 +14,7 @@ const data = [
         thumbnail: "thumbnail",
         model: "gltf path",
         description: "This is the messenger project...",
-        links: {github: 'https://github.com/Raamtaro/RaamtaroMessengerServer', live: 'Netlify Link coming soon.'},
+        links: {github: 'https://github.com/Raamtaro/RaamtaroMessengerServer', live: ''},
         skills: ['javascript', 'react', 'node js', 'express', 'pSQL', 'prisma']
     },
     {
@@ -23,7 +23,7 @@ const data = [
         thumbnail: "thumbnail",
         model: "gltf path",
         description: "Coming soon...",
-        links: {github: 'coming soon...', live: 'Netlify Link coming soon.'},
+        links: {github: '', live: ''},
         skills: ['javascript', 'three js', 'webGL']
     },
     {
@@ -32,7 +32,7 @@ const data = [
         thumbnail: "thumbnail",
         model: "gltf path",
         description: "This is the Photo Gallery project....",
-        links: {github: 'https://github.com/Raamtaro/PhotoExhibitor', live: 'Netlify Link coming soon.'},
+        links: {github: 'https://github.com/Raamtaro/PhotoExhibitor', live: ''},
         skills: ['javascript', 'three js', 'webGL', 'react', 'node js', 'express', 'pSQL', 'prisma']
     }
 ]

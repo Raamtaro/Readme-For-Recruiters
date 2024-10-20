@@ -11,7 +11,7 @@ function ProjectCard({project}) {
   
   return (
     <div className="project-card">
-        <Title title={project.title} skills={project.skills} description={project.description} />
+        <Title title={project.title} skills={project.skills} description={project.description} links={project.links} />
         <SkillCard skills={project.skills} />
     </div>
   )
