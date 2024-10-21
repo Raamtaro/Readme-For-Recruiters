@@ -57,7 +57,7 @@ function Experience() {
             },
             velocity: 0,
             targetVelocity: 0,
-            ease: 0.99
+            ease: 0.07
         }
     )
 
@@ -134,12 +134,28 @@ function Experience() {
         // determineParallax(delta)
         calculateMouseSpeed() //we'll need to use the mouse.current.trail to position the plane
 
-        planeRef.current.position.x = mouse.current.normalizedTrail.x
-        planeRef.current.position.y = mouse.current.normalizedTrail.y
+        const mouseVector = new THREE.Vector3(
+            mouse.current.normalizedTrail.x,
+            mouse.current.normalizedTrail.y,
+            0.5 // z-value (adjust as needed)
+        );
+
+        mouseVector.unproject(cameraRef.current);
+        const dir = mouseVector.sub(cameraRef.current.position).normalize();
+        const distance = 5;
+
+        const pos = cameraRef.current.position.clone().add(dir.multiplyScalar(distance));
+
+        // planeRef.current.position.x = mouse.current.normalizedTrail.x
+        // planeRef.current.position.y = mouse.current.normalizedTrail.y
+
+        planeRef.current.position.x = pos.x;
+        planeRef.current.position.y = pos.y;
+        planeRef.current.position.z = pos.z;
 
 
-        cameraRef.current.position.y = -scrollY / size.height * 10
-        planeRef.current.position.y += -scrollY / size.height * 10
+        cameraRef.current.position.y = -scrollY / size.height * distance
+        // planeRef.current.position.y += -scrollY / size.height * distance
 
         
     })
