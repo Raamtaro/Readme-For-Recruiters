@@ -6,9 +6,7 @@ import { extend, useThree } from '@react-three/fiber'
 import vertexShader from './shaders/halftone/vertex.glsl'
 import fragmentShader from './shaders/halftone/fragment.glsl'
 
-const HalftoneShaderMaterial = forwardRef((props, ref) => {
-
-    
+const HalftoneShaderMaterial = forwardRef((props, ref) => {   
     const shaderMaterial = useMemo(()=> {
         return new THREE.ShaderMaterial(
             {
@@ -26,11 +24,7 @@ const HalftoneShaderMaterial = forwardRef((props, ref) => {
             }
         )
     },[])
-
     return <primitive object={shaderMaterial} ref={ref} attach="material" {...props} />
-
 })
-
-// extend({HalftoneShaderMaterial})
 
 export default HalftoneShaderMaterial

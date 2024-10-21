@@ -11,6 +11,7 @@ import * as THREE from 'three'
 
 //Components
 import Model from './Model/Model'
+import MagicPlane from './MagicPlane/MagicPlane'
 
 
 
@@ -25,6 +26,7 @@ function Experience() {
     //Refs
     const modelRef = useRef()
     const particlesRef = useRef()
+    const planeRef = useRef()
     const cameraGroupRef = useRef()
     const cameraRef = useRef()
     const scrollRef = useRef({
@@ -34,6 +36,14 @@ function Experience() {
     const mouse = useRef(
         {
             current: {
+                x: 0,
+                y: 0
+            },
+            normalized: {
+                x: 0,
+                y: 0
+            },
+            normalizedTrail: {
                 x: 0,
                 y: 0
             },
@@ -47,16 +57,22 @@ function Experience() {
             },
             velocity: 0,
             targetVelocity: 0,
-            ease: 0.7
+            ease: 0.99
         }
     )
 
     const calculateMouseSpeed = () => {
         mouse.current.velocity = Math.sqrt( (mouse.current.previous.x - mouse.current.current.x)**2 + (mouse.current.previous.y - mouse.current.current.y)**2)
 
-        mouse.current.targetVelocity -= mouse.current.ease * (mouse.current.targetVelocity - mouse.current.velocity)
+        mouse.current.targetVelocity -= mouse.current.ease * (mouse.current.targetVelocity - mouse.current.velocity) //This should pretty much be the same between normalized and 0 to 1
+
+        //0 -> 1 trail - Might not need this and will delete to save cpu
         mouse.current.trail.x -= mouse.current.ease * (mouse.current.trail.x - mouse.current.current.x)
         mouse.current.trail.y -= mouse.current.ease * (mouse.current.trail.y - mouse.current.current.y)
+
+        //Normalized Trail
+        mouse.current.normalizedTrail.x -= mouse.current.ease * (mouse.current.normalizedTrail.x - mouse.current.normalized.x)
+        mouse.current.normalizedTrail.y -= mouse.current.ease * (mouse.current.normalizedTrail.y - mouse.current.normalized.y)
 
         mouse.current.previous.x = mouse.current.current.x
         mouse.current.previous.y = mouse.current.current.y
@@ -76,8 +92,18 @@ function Experience() {
 
     useEffect(()=> { //Mouse Event Listener
         const handleMouseMove = (event) => {
+
+            //0 -> 1 coordinates, for parallax + post stuff
             mouse.current.current.x = event.clientX / size.width
-            mouse.current.current.y = 1.0 - event.clientY / size.height // -1 * -1 to convert to event.clientY / size.height          
+            mouse.current.current.y = 1.0 - event.clientY / size.height // -1 * -1 to convert to event.clientY / size.height      
+
+            //Normalized Coordinates - -1 to 1 
+            mouse.current.normalized.x = (event.clientX / size.width) * 2 - 1
+            mouse.current.normalized.y = -(event.clientY / size.height) * 2 + 1
+
+            // console.log(mouse.current.normalized)
+            
+            
         }
 
         window.addEventListener('mousemove', handleMouseMove)
@@ -103,10 +129,17 @@ function Experience() {
     }, [])
 
     useFrame((state, delta) => {
-        determineParallax(delta)
-        calculateMouseSpeed()
-        cameraRef.current.position.y = -scrollY / size.height * 10
 
+        //Mouse stuff
+        determineParallax(delta)
+        calculateMouseSpeed() //we'll need to use the mouse.current.trail to position the plane
+
+        planeRef.current.position.x = mouse.current.normalizedTrail.x
+        planeRef.current.position.y = mouse.current.normalizedTrail.y
+
+
+        cameraRef.current.position.y = -scrollY / size.height * 10
+        planeRef.current.position.y += -scrollY / size.height * 10
 
         
     })
@@ -128,6 +161,7 @@ function Experience() {
            
             <Particles />
             {/* <Model innerRef={modelRef}/> */}
+            <MagicPlane ref={planeRef}/>
         </>
 
     )
