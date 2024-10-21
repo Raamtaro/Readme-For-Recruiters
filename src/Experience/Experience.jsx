@@ -131,7 +131,7 @@ function Experience() {
     useFrame((state, delta) => {
 
         //Mouse stuff
-        determineParallax(delta)
+        // determineParallax(delta)
         calculateMouseSpeed() //we'll need to use the mouse.current.trail to position the plane
 
         planeRef.current.position.x = mouse.current.normalizedTrail.x
