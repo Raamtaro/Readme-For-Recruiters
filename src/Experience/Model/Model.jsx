@@ -5,7 +5,7 @@ import * as THREE from 'three'
 import { useGLTF } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 
-import HalftoneShaderMaterial from '../CustomShaderMaterial/HalftoneShaderMaterial'
+import HalftoneShaderMaterial from './CustomShaderMaterial/HalftoneShaderMaterial'
 import { Clock } from 'three'
 import CustomShaderMaterial from 'three-custom-shader-material'
 

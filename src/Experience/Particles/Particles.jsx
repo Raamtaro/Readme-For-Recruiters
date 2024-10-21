@@ -24,9 +24,9 @@ function Particles() {
         return positions
     })
 
-    // useFrame((state, delta)=> {
-    //     particlesRef.current.rotation.y += delta * 0.05
-    // })
+    useFrame((state, delta)=> {
+        particlesRef.current.rotation.y += delta * 0.05
+    })
 
     return (
         <points ref={particlesRef}>

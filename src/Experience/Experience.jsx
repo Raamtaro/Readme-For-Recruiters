@@ -70,9 +70,6 @@ function Experience() {
         cameraGroupRef.current.position.x += (parallaxX - cameraGroupRef.current.position.x) * 5 * delta * 0.46
         cameraGroupRef.current.position.y += (parallaxY - cameraGroupRef.current.position.y) * 5 * delta * 0.46
 
-        // cameraGroupRef.current.rotation.y -= (parallaxX - cameraGroupRef.current.position.x) * 5 * delta * 0.1
-        // cameraGroupRef.current.rotation.x -= (parallaxX - cameraGroupRef.current.position.y) * 5 * delta * 0.1
-
         // modelRef.current.rotation.y += (parallaxX - cameraGroupRef.current.position.x) * 5 * delta * 0.95 
         // modelRef.current.rotation.x += (parallaxY - cameraGroupRef.current.position.y) * 5 * delta * 0.95 
     }
