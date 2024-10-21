@@ -78,17 +78,17 @@ function Experience() {
         mouse.current.previous.y = mouse.current.current.y
     }
 
-    const determineParallax = (delta) => {
-        const parallaxCoords = {x: mouse.current.current.x - 0.5, y: mouse.current.current.y}
-        const parallaxX = parallaxCoords.x * 0.25
-        const parallaxY = -parallaxCoords.y * 0.25
+    // const determineParallax = (delta) => {
+    //     const parallaxCoords = {x: mouse.current.current.x - 0.5, y: mouse.current.current.y}
+    //     const parallaxX = parallaxCoords.x * 0.25
+    //     const parallaxY = -parallaxCoords.y * 0.25
 
-        cameraGroupRef.current.position.x += (parallaxX - cameraGroupRef.current.position.x) * 5 * delta * 0.46
-        cameraGroupRef.current.position.y += (parallaxY - cameraGroupRef.current.position.y) * 5 * delta * 0.46
+    //     cameraGroupRef.current.position.x += (parallaxX - cameraGroupRef.current.position.x) * 5 * delta * 0.46
+    //     cameraGroupRef.current.position.y += (parallaxY - cameraGroupRef.current.position.y) * 5 * delta * 0.46
 
-        // modelRef.current.rotation.y += (parallaxX - cameraGroupRef.current.position.x) * 5 * delta * 0.95 
-        // modelRef.current.rotation.x += (parallaxY - cameraGroupRef.current.position.y) * 5 * delta * 0.95 
-    }
+    //     // modelRef.current.rotation.y += (parallaxX - cameraGroupRef.current.position.x) * 5 * delta * 0.95 
+    //     // modelRef.current.rotation.x += (parallaxY - cameraGroupRef.current.position.y) * 5 * delta * 0.95 
+    // }
 
     useEffect(()=> { //Mouse Event Listener
         const handleMouseMove = (event) => {
