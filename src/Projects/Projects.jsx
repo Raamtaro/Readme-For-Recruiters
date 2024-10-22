@@ -36,7 +36,8 @@ function Projects() {
                 scrollTrigger: {
                     trigger: projectContainer.current,
                     pin: true,
-                    scrub: .5,
+                    scrub: .75,
+                    end: () => `+=${projectContainer.current.offsetWidth * (projectCards.length - 1)}`, // Dynamic end based on content width
                 }
             }
         )

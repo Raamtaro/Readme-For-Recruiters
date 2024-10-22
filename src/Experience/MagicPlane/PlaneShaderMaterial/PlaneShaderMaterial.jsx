@@ -6,15 +6,25 @@ import { extend, useThree } from '@react-three/fiber'
 import vertexShader from './shaders/vertex.glsl'
 import fragmentShader from './shaders/fragment.glsl'
 
+//Texture Loader stuff
+import { useLoader } from '@react-three/fiber'
+import { TextureLoader } from 'three'
+
+// import helloWorldTexture from '../../../assets/textures/sunflower.jpg'
 
 
-const PlaneShaderMaterial = forwardRef((props, ref) => {   
+
+const PlaneShaderMaterial = forwardRef((props, ref) => {    
+    const helloWorld = useLoader(TextureLoader, './textures/sunflower.jpg')
+    const helloNewWorld = useLoader(TextureLoader, './textures/bonzai.jpeg')
+
     const shaderMaterial = useMemo(()=> {
         return new THREE.ShaderMaterial(
             {
                 uniforms: {
                     uOffset: {value: new THREE.Vector2(0.0, 0.0)},
-                    uAlpha: {value: 0.3}
+                    uAlpha: {value: 0.9},
+                    uTexture: {value: helloNewWorld}
                 },
                 vertexShader: vertexShader,
                 fragmentShader: fragmentShader,

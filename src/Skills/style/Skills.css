@@ -3,6 +3,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    /* background-color: rgb(230, 251, 243); */
+
+    /* color: rgb(20, 20, 20);
+    opacity: 0.1;
+    mix-blend-mode: difference; */
     
 
 }
@@ -74,9 +79,15 @@ For now, keeping 1024 as the breakpoint because it works with the current design
     .skills-section {
         flex-direction: row;
         flex-wrap: wrap;
-        justify-content: center;
+        justify-content: space-around;
         align-items: flex-start;
     }
 
  }
+
+ /* @media only screen and (min-width: 1264px) {
+    .skills-section {
+        justify-content: space-between;
+    }
+ } */
 

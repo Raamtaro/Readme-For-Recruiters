@@ -10,7 +10,19 @@
     max-width: 275px;
 
     color: #e6fbf3;
-
     /* mix-blend-mode: difference; */
-    
+}
+
+@media only screen and (min-width: 764px) {
+    .text {
+        font-size: .95rem;
+        
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .text {
+        max-width: 315px;
+        font-size: 1rem;
+    }
 }

@@ -76,3 +76,40 @@
 .modal-flex-container>p {
     max-width: 600px;
 }
+
+
+@media only screen and (min-width: 1000px) {
+
+    /* modal */
+    .project-links>a>svg {
+        height: 4rem;
+        width: 4rem;
+    }
+
+    .modal-flex-section>ul {
+        font-size: 1.0rem;
+    }
+
+    .modal-flex-container>p {
+        font-size: 1.2rem;
+    }
+
+
+
+}
+
+@media only screen and (min-width: 1024px) {
+    .modal-flex-container>p {
+        max-width: 750px;
+    }
+
+    .modal-flex-container {
+        justify-content: space-between;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .modal-flex-container>p {
+        max-width: 850px;
+    }
+}

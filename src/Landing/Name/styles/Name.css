@@ -27,3 +27,18 @@ nav>span:nth-child(1) {
     font-size: .75rem;
     
 } */
+
+
+@media only screen and (min-width: 1024px) {
+    nav>span:nth-child(1) {
+        font-size: 2.25rem;
+        letter-spacing: .25rem;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    nav>span:nth-child(1) {
+        font-size: 2.5rem;
+        letter-spacing: .30rem;
+    }
+}
