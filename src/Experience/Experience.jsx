@@ -12,11 +12,18 @@ import * as THREE from 'three'
 import Model from './Model/Model'
 import MagicPlane from './MagicPlane/MagicPlane'
 
+import gsap from 'gsap'
+import { useGSAP } from '@gsap/react'
+
+gsap.registerPlugin(useGSAP)
+
 
 
 // extend({ OrbitControls: OrbitControls }) //can be rewritten as below because name is same
 extend({ OrbitControls })
-function Experience() {
+function Experience({activeSection}) {
+
+
     /**
      * mouse.current component will set up meshes within the landing page scene as well as control animations.
      */
@@ -80,7 +87,7 @@ function Experience() {
     const unmapMouse = () => {
         //https://tympanus.net/codrops/2019/10/21/how-to-create-motion-hover-effects-with-image-distortions-using-three-js/#:~:text=Updating%20the%20plane%20position
         //I re-adapted the approach from the above article
-        
+
         //Remapping the mouse coordinates fit the view size of the scene (2D --> 3D)
         const mouseVector = new THREE.Vector3(
             mouse.current.normalizedTrail.x,
@@ -149,6 +156,10 @@ function Experience() {
             window.removeEventListener('scroll', handleScroll)
         }
     }, [])
+
+    useGSAP(()=> {
+        
+    })
 
     useFrame((state, delta) => {
 
