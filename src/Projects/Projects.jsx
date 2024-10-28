@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useRef} from 'react'
 
 import ProjectCard from './ProjectCard/ProjectCard.jsx'
-import ModalInfo from './ModalInfo/ModalInfo'
+
 
 import data from '../utils/data.js'
 import { gsap } from "gsap";

@@ -30,6 +30,8 @@ void main() {
 
     gl_FragColor = vec4(color, uAlpha);
 
+
+    // // Debug 
     // gl_FragColor = vec4(vUv, 0.0 ,uAlpha); //This works out, vUv is being passed correctly.
     // gl_FragColor = vec4(helloWorld.rgb, uAlpha);
     // #include <tonemapping_fragment>

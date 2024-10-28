@@ -21,7 +21,7 @@ gsap.registerPlugin(useGSAP)
 
 // extend({ OrbitControls: OrbitControls }) //can be rewritten as below because name is same
 extend({ OrbitControls })
-function Experience({activeSection}) {
+function Experience({landingActive}) {
 
 
     /**
@@ -109,7 +109,7 @@ function Experience({activeSection}) {
         planeRef.current.material.uniforms.uOffset.value.y = mouse.current.targetVelocity * dir.y * 3.0
     }
 
-    // const determineParallax = (delta) => {
+    // const determineParallax = (delta) => { 
     //     const parallaxCoords = {x: mouse.current.normalized.x - 0.5, y: mouse.current.normalized.y}
     //     const parallaxX = parallaxCoords.x * 0.25
     //     const parallaxY = -parallaxCoords.y * 0.25
@@ -131,10 +131,26 @@ function Experience({activeSection}) {
             {
                 value: 0.0,
                 ease: 'power3.in',
-                duration: 1.5
+                duration: 2.0
             }
         )
     })
+
+    useGSAP(()=> {
+        gsap.to(
+            planeRef.current.material.uniforms.uAlpha,
+            {
+                value: landingActive ? .75 : 0.0,
+                ease: landingActive ? 'power3.in' : 'power3.out',
+                duration: landingActive ? 1.5 : .5,
+                overwrite: true
+            }
+        )
+
+
+    }, [landingActive])
+
+
 
     useEffect(()=> { //Mouse Event Listener
         const handleMouseMove = (event) => {
@@ -174,10 +190,6 @@ function Experience({activeSection}) {
             window.removeEventListener('scroll', handleScroll)
         }
     }, [])
-
-    // useGSAP(()=> {
-        
-    // })
 
     useFrame((state, delta) => {
 
