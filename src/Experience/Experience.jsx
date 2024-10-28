@@ -72,7 +72,7 @@ function Experience({landingActive}) {
 
         mouse.current.targetVelocity -= mouse.current.ease * (mouse.current.targetVelocity - mouse.current.velocity) //This should pretty much be the same between normalized and 0 to 1
 
-        // //0 -> 1 trail - Might not need this and will delete to save cpu
+        // //0 -> 1 trail - Might not need this and will delete to save cpu. I'm keeping for now as I may or may not include a ShaderPass with some mouse fx...
         // mouse.current.trail.x -= mouse.current.ease * (mouse.current.trail.x - mouse.current./current.x)
         // mouse.current.trail.y -= mouse.current.ease * (mouse.current.trail.y - mouse.current./current.y)
 
@@ -109,7 +109,7 @@ function Experience({landingActive}) {
         planeRef.current.material.uniforms.uOffset.value.y = mouse.current.targetVelocity * dir.y * 3.0
     }
 
-    // const determineParallax = (delta) => { 
+    // const determineParallax = (delta) => { //I'm keeping this commented out for now because moving the camera around messes with the plane Tracking. 
     //     const parallaxCoords = {x: mouse.current.normalized.x - 0.5, y: mouse.current.normalized.y}
     //     const parallaxX = parallaxCoords.x * 0.25
     //     const parallaxY = -parallaxCoords.y * 0.25
@@ -194,12 +194,18 @@ function Experience({landingActive}) {
     useFrame((state, delta) => {
 
         //Mouse stuff
-        // determineParallax(delta)
-        calculateMouseSpeed() //we'll need to use the mouse.current.trail to position the plane
+        calculateMouseSpeed() 
         remapMouse()
 
+        //Camera Scrolling
+
+        /**
+         * As a note, the camera scrolling likely could have been achieved with Scroll Controls helper from DREI. However... 
+         * I need some more customization, and so I want to avoid using them in this project :) 
+         */
+
         cameraRef.current.position.y = -scrollY / size.height * 10
-        // planeRef.current.position.y += -scrollY / size.height * distance //Need to comment this out as this prevents the mouse <> plane mapping from working across the entire body
+
 
         
     })
@@ -211,9 +217,9 @@ function Experience({landingActive}) {
             <group ref={cameraGroupRef}>
                 <PerspectiveCamera
                     ref={cameraRef}
-                    makeDefault              // Makes mouse.current camera the default camera
-                    position={[0, 0, 6]}     // Set camera position
-                    fov={35}                 // Field of View
+                    makeDefault              
+                    position={[0, 0, 6]}     
+                    fov={35}                 
                     near={0.1}
                     far={100}
                 />

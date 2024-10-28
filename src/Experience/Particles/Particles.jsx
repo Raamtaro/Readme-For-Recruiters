@@ -2,6 +2,8 @@ import React, {useMemo, useEffect, useRef} from 'react'
 
 import { useFrame } from '@react-three/fiber'
 
+import ParticleShaderMaterial from './ParticlesShaderMaterial/ParticleShaderMaterial'
+
 import * as THREE from 'three'
 
 function Particles() {
@@ -24,6 +26,20 @@ function Particles() {
         return positions
     })
 
+    let scales = useMemo(()=> {
+        const particlesCount = 200
+        const scales = new Float32Array(particlesCount * 1)
+
+
+        for (let i = 0; i < particlesCount; i++) {
+            scales[i] = Math.random()
+        }
+
+        return scales
+    })
+
+    
+
     useFrame((state, delta)=> {
         particlesRef.current.rotation.y += delta * 0.05
     })
@@ -37,13 +53,24 @@ function Particles() {
                     count={200}
                     itemSize={3}
                 />
+                <bufferAttribute 
+                    attach="aScale"
+                    array={scales}
+                    count={200}
+                    itemSize={1}
+                />
             </bufferGeometry>
-            <pointsMaterial
+            {/* <pointsMaterial
                 attach="material"
                 
                 color={0xe6fbf3}
                 size={0.1}
                 sizeAttenuation 
+                
+            /> */}
+
+            <ParticleShaderMaterial 
+
                 
             />
         </points>

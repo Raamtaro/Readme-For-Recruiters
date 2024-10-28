@@ -92,7 +92,7 @@ function Skills() {
             </ul>
         </div>
         <div className="skill-section-item">
-            <h3>Build/VCS</h3>
+            <h3>Build & CI/CD</h3>
             <ul className="skill-section-list">
                 <div className="row">
                     <li className="skill-section-list-item">
