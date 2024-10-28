@@ -161,7 +161,7 @@ function Experience({activeSection}) {
             window.removeEventListener('mousemove', handleMouseMove)
         }
 
-    }, [])
+    }, [size])
 
     useEffect(()=> { //Scroll Event Listener
         const handleScroll = () => {
