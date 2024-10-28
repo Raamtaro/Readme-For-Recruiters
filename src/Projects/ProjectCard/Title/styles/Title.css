@@ -109,7 +109,13 @@
 }
 
 @media only screen and (min-width: 1200px) {
+    .modal-flex-container {
+        justify-content: flex-start;
+        gap: 10rem;
+    }
+
     .modal-flex-container>p {
-        max-width: 850px;
+        max-width: 1000px;
+        
     }
 }
