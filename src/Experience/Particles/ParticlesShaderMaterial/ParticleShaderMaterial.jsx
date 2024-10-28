@@ -17,7 +17,9 @@ const ParticleShaderMaterial = forwardRef((props, ref) => {
         return new THREE.ShaderMaterial(
             {
                 uniforms: {
-                    uSize: { value: 100.0 * gl.getPixelRatio() }
+                    uSize: { value: 100.0 * gl.getPixelRatio() },
+                    uTime: {value: 0.0},
+                    
                 },
                 vertexShader: vertexShader,
                 fragmentShader: fragmentShader,

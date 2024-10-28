@@ -9,6 +9,7 @@ import * as THREE from 'three'
 function Particles() {
 
     const particlesRef = useRef()
+    const materialRef = useRef()
 
 
     let positions = useMemo(()=> {
@@ -41,7 +42,9 @@ function Particles() {
     
 
     useFrame((state, delta)=> {
-        particlesRef.current.rotation.y += delta * 0.05
+        // particlesRef.current.rotation.y += delta * 0.05
+        materialRef.current.uniforms.uTime.value += delta * 0.5
+
     })
 
     return (
@@ -54,7 +57,7 @@ function Particles() {
                     itemSize={3}
                 />
                 <bufferAttribute 
-                    attach="aScale"
+                    attach="attributes-aScale"
                     array={scales}
                     count={200}
                     itemSize={1}
@@ -70,7 +73,7 @@ function Particles() {
             /> */}
 
             <ParticleShaderMaterial 
-
+                ref = {materialRef}
                 
             />
         </points>
