@@ -2,11 +2,18 @@ import React, {forwardRef, useRef} from 'react'
 import PlaneShaderMaterial from './PlaneShaderMaterial/PlaneShaderMaterial'
 import { useFrame } from '@react-three/fiber'
 
+import { useGSAP } from '@gsap/react'
+import gsap from 'gsap'
+
+
+gsap.registerPlugin(useGSAP)
 
 
 
 const MagicPlane = forwardRef((props, ref) => {
     const materialRef = useRef()
+
+
     return (
         <>
             <mesh ref={ref} {...props}>

@@ -10,7 +10,7 @@ import fragmentShader from './shaders/fragment.glsl'
 import { useLoader } from '@react-three/fiber'
 import { TextureLoader } from 'three'
 
-// import helloWorldTexture from '../../../assets/textures/sunflower.jpg'
+
 
 
 

@@ -68,23 +68,23 @@ function Experience({activeSection}) {
     )
 
     const calculateMouseSpeed = () => {
-        mouse.current.velocity = Math.sqrt( (mouse.current.previous.x - mouse.current.current.x)**2 + (mouse.current.previous.y - mouse.current.current.y)**2)
+        mouse.current.velocity = Math.sqrt( (mouse.current.previous.x - mouse.current.normalized.x)**2 + (mouse.current.previous.y - mouse.current.normalized.y)**2)
 
         mouse.current.targetVelocity -= mouse.current.ease * (mouse.current.targetVelocity - mouse.current.velocity) //This should pretty much be the same between normalized and 0 to 1
 
-        //0 -> 1 trail - Might not need this and will delete to save cpu
-        mouse.current.trail.x -= mouse.current.ease * (mouse.current.trail.x - mouse.current.current.x)
-        mouse.current.trail.y -= mouse.current.ease * (mouse.current.trail.y - mouse.current.current.y)
+        // //0 -> 1 trail - Might not need this and will delete to save cpu
+        // mouse.current.trail.x -= mouse.current.ease * (mouse.current.trail.x - mouse.current./current.x)
+        // mouse.current.trail.y -= mouse.current.ease * (mouse.current.trail.y - mouse.current./current.y)
 
         //Normalized Trail
         mouse.current.normalizedTrail.x -= mouse.current.ease * (mouse.current.normalizedTrail.x - mouse.current.normalized.x)
         mouse.current.normalizedTrail.y -= mouse.current.ease * (mouse.current.normalizedTrail.y - mouse.current.normalized.y)
 
-        mouse.current.previous.x = mouse.current.current.x
-        mouse.current.previous.y = mouse.current.current.y
+        mouse.current.previous.x = mouse.current.normalized.x
+        mouse.current.previous.y = mouse.current.normalized.y
     }
 
-    const unmapMouse = () => {
+    const remapMouse = () => {
         //https://tympanus.net/codrops/2019/10/21/how-to-create-motion-hover-effects-with-image-distortions-using-three-js/#:~:text=Updating%20the%20plane%20position
         //I re-adapted the approach from the above article
 
@@ -105,12 +105,12 @@ function Experience({activeSection}) {
         planeRef.current.position.z = pos.z;
 
         //Update planeRef's uniforms as it depends on the dir variable
-        planeRef.current.material.uniforms.uOffset.value.x = mouse.current.targetVelocity * dir.x * 7.0
-        planeRef.current.material.uniforms.uOffset.value.y = mouse.current.targetVelocity * dir.y * 7.0
+        planeRef.current.material.uniforms.uOffset.value.x = mouse.current.targetVelocity * dir.x * 3.0
+        planeRef.current.material.uniforms.uOffset.value.y = mouse.current.targetVelocity * dir.y * 3.0
     }
 
     // const determineParallax = (delta) => {
-    //     const parallaxCoords = {x: mouse.current.current.x - 0.5, y: mouse.current.current.y}
+    //     const parallaxCoords = {x: mouse.current.normalized.x - 0.5, y: mouse.current.normalized.y}
     //     const parallaxX = parallaxCoords.x * 0.25
     //     const parallaxY = -parallaxCoords.y * 0.25
 
@@ -118,12 +118,30 @@ function Experience({activeSection}) {
     //     // modelRef.current.rotation.x += (parallaxY - cameraGroupRef.current.position.y) * 5 * delta * 0.95 
     // }
 
+    // useEffect(()=> { //Adding an event listener for resize here, as I'm noticing that the mouse coordinate --> Position mapping gets all messed up for the plane
+
+
+    // }, [])
+
+    //On mount, let's go ahead and fade the opacity in to the current from 0.0
+
+    useGSAP(()=> {
+        gsap.from(
+            planeRef.current.material.uniforms.uAlpha,
+            {
+                value: 0.0,
+                ease: 'power3.in',
+                duration: 1.5
+            }
+        )
+    })
+
     useEffect(()=> { //Mouse Event Listener
         const handleMouseMove = (event) => {
 
             //0 -> 1 coordinates, for parallax + post stuff
-            mouse.current.current.x = event.clientX / size.width
-            mouse.current.current.y = event.clientY / size.height // -1 * -1 to convert to event.clientY / size.height      
+            mouse.current.normalized.x = event.clientX / size.width
+            mouse.current.normalized.y = event.clientY / size.height // -1 * -1 to convert to event.clientY / size.height      
 
             //Normalized Coordinates - -1 to 1 
             mouse.current.normalized.x = (event.clientX / size.width) * 2 - 1
@@ -157,16 +175,16 @@ function Experience({activeSection}) {
         }
     }, [])
 
-    useGSAP(()=> {
+    // useGSAP(()=> {
         
-    })
+    // })
 
     useFrame((state, delta) => {
 
         //Mouse stuff
         // determineParallax(delta)
         calculateMouseSpeed() //we'll need to use the mouse.current.trail to position the plane
-        unmapMouse()
+        remapMouse()
 
         cameraRef.current.position.y = -scrollY / size.height * 10
         // planeRef.current.position.y += -scrollY / size.height * distance //Need to comment this out as this prevents the mouse <> plane mapping from working across the entire body

@@ -14,6 +14,7 @@ import {ReactLenis} from 'lenis/react'
 function App() {
 
   //Track active section
+  
 
   return (
     <>
