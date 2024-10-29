@@ -43,7 +43,7 @@ function Particles() {
 
     useFrame((state, delta)=> {
         // particlesRef.current.rotation.y += delta * 0.05
-        materialRef.current.uniforms.uTime.value += delta * 0.5
+        materialRef.current.uniforms.uTime.value += delta
 
     })
 

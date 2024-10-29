@@ -6,7 +6,7 @@ import './styles/Name.css'
 function Name() {
   return (
     <>
-         <nav>
+         <nav className='portfolio-header'>
             <span>
                 Raam Sanghani
             </span>

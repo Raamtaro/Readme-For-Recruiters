@@ -32,6 +32,9 @@ function App() {
         onLeave: () => {
           setOnLanding(false)
         },
+        // onLeaveBack: () => {
+        //   setOnLanding(false)
+        // },
         onEnterBack: () => { 
           setOnLanding(true)
         }

@@ -125,16 +125,33 @@ function Experience({landingActive}) {
 
     //On mount, let's go ahead and fade the opacity in to the current from 0.0
 
+    // useEffect(() => {
+    //     if (planeRef.current) {
+    //         planeRef.current.material.uniforms.uAlpha.value = landingActive ? 0.75 : 0.0;
+    //     }
+    // }, []);
+
+
     useGSAP(()=> {
-        gsap.from(
-            planeRef.current.material.uniforms.uAlpha,
-            {
-                value: 0.0,
-                ease: 'power3.in',
-                duration: 2.0
-            }
-        )
-    })
+        gsap
+            .to(
+                planeRef.current.material.uniforms.uAlpha,
+                {
+                    value: 0.75,
+                    ease: 'power3.in',
+                    duration: 1.0
+                }
+            )
+        
+    }, [planeRef])
+
+    // useEffect(() => {
+    //     if (planeRef.current) {
+    //         gsap.set(planeRef.current.material.uniforms.uAlpha, {
+    //             value: landingActive ? 0.75 : 0.0,
+    //         });
+    //     }
+    // }, []);
 
     useGSAP(()=> {
         gsap.to(
@@ -143,7 +160,8 @@ function Experience({landingActive}) {
                 value: landingActive ? .75 : 0.0,
                 ease: landingActive ? 'power3.in' : 'power3.out',
                 duration: landingActive ? 1.5 : .5,
-                overwrite: true
+                overwrite: true,
+                delay: 0.1
             }
         )
 

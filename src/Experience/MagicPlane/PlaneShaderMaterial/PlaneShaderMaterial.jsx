@@ -7,12 +7,14 @@ import fragmentShader from './shaders/fragment.glsl'
 //Texture Loader stuff
 import { useLoader } from '@react-three/fiber'
 import { TextureLoader } from 'three'
+import { Texture } from '@react-three/drei'
 
 
 
 
 
 const PlaneShaderMaterial = forwardRef((props, ref) => {    
+    const profilePicture = useLoader(TextureLoader, './textures/profilePic.jpeg')
     const helloWorld = useLoader(TextureLoader, './textures/sunflower.jpg')
     const helloNewWorld = useLoader(TextureLoader, './textures/bonzai.jpeg')
 
@@ -21,8 +23,8 @@ const PlaneShaderMaterial = forwardRef((props, ref) => {
             {
                 uniforms: {
                     uOffset: {value: new THREE.Vector2(0.0, 0.0)},
-                    uAlpha: {value: .75},
-                    uTexture: {value: helloNewWorld}
+                    uAlpha: {value: 0.0},
+                    uTexture: {value: profilePicture}
                 },
                 vertexShader: vertexShader,
                 fragmentShader: fragmentShader,

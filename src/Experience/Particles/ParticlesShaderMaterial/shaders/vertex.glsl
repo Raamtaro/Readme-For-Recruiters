@@ -14,8 +14,8 @@ void main()
     float distanceToCenter = length(modelPosition.xz);
     float angleOffset = (1.0 / distanceToCenter) * uTime * 0.2;
     angle += angleOffset;
-    modelPosition.x = cos(angle);
-    modelPosition.z = sin(angle);
+    modelPosition.x = cos(angle) * distanceToCenter;
+    modelPosition.z = sin(angle) * distanceToCenter;
 
 
     vec4 viewPosition = viewMatrix * modelPosition;
@@ -29,6 +29,6 @@ void main()
     /*
     * Sizing
     */
-    gl_PointSize = uSize;
+    gl_PointSize = uSize * aScale;
     gl_PointSize *= (1.0 / - viewPosition.z);
 }

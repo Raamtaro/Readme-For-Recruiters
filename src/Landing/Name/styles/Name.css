@@ -1,4 +1,4 @@
-nav {
+nav.portfolio-header {
     position: fixed !important;
 
     top: 2rem;
@@ -10,12 +10,15 @@ nav {
     flex-direction: column;
     justify-content: space-between;
 
+    /* background-color: rgb(20, 20, 20); */
+    /* mix-blend-mode: difference; */
+
     z-index: 10;
 
 
 }
 
-nav>span:nth-child(1) {
+nav.portfolio-header>span:nth-child(1) {
     text-transform: uppercase;
     font-family: 'Le murmure', sans-serif;
     font-size: 2.15rem;
@@ -30,19 +33,19 @@ nav>span:nth-child(1) {
 
 
 @media only screen and (min-width: 1024px) {
-    nav>span:nth-child(1) {
+    nav.portfolio-header>span:nth-child(1) {
         font-size: 2.25rem;
         letter-spacing: .25rem;
     }
 }
 
 @media only screen and (min-width: 1024px) {
-    nav>span:nth-child(1) {
+    nav.portfolio-header>span:nth-child(1) {
         font-size: 2.75rem;
         letter-spacing: .30rem;
     }
 
-    nav>span:nth-child(2) {
+    nav.portfolio-header>span:nth-child(2) {
         font-size: 1.0rem;
         letter-spacing: .25rem;
     }
