@@ -223,6 +223,7 @@ function Experience({landingActive}) {
          */
 
         cameraRef.current.position.y = -scrollY / size.height * 10
+        // cameraRef.current.position.y = -(scrollRef.current.value) / size.height * 10
 
 
         
@@ -244,7 +245,7 @@ function Experience({landingActive}) {
             </group>
            
             <Particles />
-            {/* <Model innerRef={modelRef}/> */}
+            <Model innerRef={modelRef}/>
             <MagicPlane ref={planeRef}/>
         </>
 
