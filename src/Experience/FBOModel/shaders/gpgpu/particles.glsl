@@ -8,6 +8,7 @@ uniform float uFlowFieldStrength;
 uniform float uFlowFieldFrequency;
 uniform vec2 uMouse;
 uniform float uVelocity;
+uniform float uUpForce;
 // uniform vec3 uRepulsion;
 // uniform float uBounds;
 
@@ -165,7 +166,7 @@ void main() {
         //Mix(es) of Curl Noise + simplex Noise
         vec3 simplexFlowField = vec3(
             simplexNoise4d(vec4(particle.xyz * uFlowFieldFrequency + uVelocity*5.0 + 0.0, time)),
-            simplexNoise4d(vec4(particle.xyz * uFlowFieldFrequency + uVelocity*5.0 + (1.0 + uVelocity), time)),
+            simplexNoise4d(vec4(particle.xyz * uFlowFieldFrequency + uVelocity*5.0 + (1.0 + uVelocity) , time)),
             simplexNoise4d(vec4(particle.xyz * uFlowFieldFrequency  +  2.0, time))
         );
         
@@ -178,9 +179,10 @@ void main() {
         vec3 flowField = cross(simplexFlowField, curlFlowField);
         // vec3 flowField = cross(curlFlowField, simplexFlowField);
 
-        flowField = normalize(flowField);
+        flowField = normalize(curlFlowField);
         
-        particle.xyz += flowField * uDeltaTime * strength * ((uFlowFieldStrength * uFlowFieldStrength + uVelocity * 0.02 * distFromParticle)/uFlowFieldStrength)*1.25;
+        particle.xyz += flowField * uDeltaTime * strength * ((uFlowFieldStrength * uFlowFieldStrength + uVelocity * 5.0 * distFromParticle)/uFlowFieldStrength)*1.25;
+        
         particle.a += uDeltaTime * 0.3;
 
     }

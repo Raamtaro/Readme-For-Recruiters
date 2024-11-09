@@ -8,9 +8,12 @@ import { PerspectiveCamera } from '@react-three/drei'
 //Canvas output setup
 import * as THREE from 'three'
 
+//Scroll 
+import { useLenis } from 'lenis/react'
+
 //Components
 import FBOModel from './FBOModel/FBOModel'
-import Model from './WobbleModel/WobbleModel'
+
 import MagicPlane from './MagicPlane/MagicPlane'
 
 import gsap from 'gsap'
@@ -33,13 +36,11 @@ function Experience({landingActive}) {
     //Refs
     const modelRef = useRef()
     const particlesRef = useRef()
+    const fboRef = useRef()
+
     const planeRef = useRef()
     const cameraGroupRef = useRef()
     const cameraRef = useRef()
-    const scrollRef = useRef({
-        value: 0,
-        velocity: 0
-    })
     const mouse = useRef(
         {
             current: {
@@ -64,9 +65,13 @@ function Experience({landingActive}) {
             },
             velocity: 0,
             targetVelocity: 0,
-            ease: 0.045
+            ease: 0.0075
         }
     )
+    const scrollRef = useRef({
+        value: 0,
+        velocity: 0
+    })
 
     const calculateMouseSpeed = () => {
         mouse.current.velocity = Math.sqrt( (mouse.current.previous.x - mouse.current.normalized.x)**2 + (mouse.current.previous.y - mouse.current.normalized.y)**2)
@@ -124,7 +129,10 @@ function Experience({landingActive}) {
     //     )
     // }, [landingActive])
 
-
+    useLenis((lenis)=> {
+        scrollRef.current.velocity = lenis.velocity
+        // console.log(lenis.velocity)
+    })
 
     useEffect(()=> { //Mouse Event Listener
         const handleMouseMove = (event) => {
@@ -183,14 +191,20 @@ function Experience({landingActive}) {
         //Camera Scrolling
         cameraRef.current.position.y = -scrollY / size.height * 10
         // cameraRef.current.position.y = -(scrollRef.current.value) / size.height * 10
+        fboRef.current.rotation.y = mouse.current.normalizedTrail.x * 0.25
+        fboRef.current.rotation.x = -mouse.current.normalizedTrail.y * 0.15
 
+        fboRef.current.particlesVariable.material.uniforms.uVelocity.value = Math.min(mouse.current.targetVelocity, 0.075)
+        fboRef.current.particlesVariable.material.uniforms.uVelocity.value += scrollRef.current.velocity * .05
+        mouse.current.targetVelocity *= .96
+        // scrollRef.current.velocity *= .99
+        fboRef.current.rotation.x += 0.1 * Math.sin(fboRef.current.rotation.y + state.clock.getElapsedTime()*.55)
         // modelRef.current.material.uniforms.uTime.value += delta       
     })
 
     return (
         <>
             {/* <orbitControls args={ [ camera, gl.domElement ] } /> */}
-            
             <group ref={cameraGroupRef}>
                 <PerspectiveCamera
                     ref={cameraRef}
@@ -205,7 +219,7 @@ function Experience({landingActive}) {
             <Particles />
             {/* <Model innerRef={modelRef}/> */}
             <MagicPlane ref={planeRef}/>
-            <FBOModel />
+            <FBOModel ref={fboRef}/>
         </>
 
     )

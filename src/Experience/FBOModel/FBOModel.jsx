@@ -1,4 +1,4 @@
-import React, {useEffect, forwardRef, useMemo, useRef} from 'react'
+import React, {useEffect, forwardRef, useMemo, useRef, useImperativeHandle} from 'react'
 import { useGLTF } from '@react-three/drei'
 import { useFrame, useThree } from '@react-three/fiber'
 
@@ -44,6 +44,8 @@ const FBOModel = forwardRef((props, ref) => {
      */
 
     const geometryRef = useRef()
+    const pointsRef = useRef()
+
 
 
     /**
@@ -73,6 +75,7 @@ const FBOModel = forwardRef((props, ref) => {
         particlesVariable.current.material.uniforms.uFlowFieldStrength = new THREE.Uniform(1.2)
         particlesVariable.current.material.uniforms.uFlowFieldFrequency = new THREE.Uniform(0.585)
         particlesVariable.current.material.uniforms.uVelocity = new THREE.Uniform(0.0)
+        particlesVariable.current.material.uniforms.uUpForce = new THREE.Uniform(0.0)
         particlesVariable.current.material.uniforms.uMouse = new THREE.Uniform(new THREE.Vector2(-10.0, 10.0))
     }
 
@@ -119,7 +122,9 @@ const FBOModel = forwardRef((props, ref) => {
                     uResolution: new THREE.Uniform(new THREE.Vector2(size.width * Math.min(window.devicePixelRatio, 2), size.height * Math.min(window.devicePixelRatio, 2))),
                     uParticlesTexture: new THREE.Uniform(),
                     uMouse: new THREE.Uniform(new THREE.Vector2()),
-                    uAlpha: new THREE.Uniform(0.0)                    
+                    uAlpha: new THREE.Uniform(0.0),
+
+
                 },
 
                 vertexShader: vertexShader,
@@ -156,9 +161,6 @@ const FBOModel = forwardRef((props, ref) => {
 
         //Setup the draw range and attributes for the buffer geometry
         if (geometryRef.current) {
-            // geometryRef.current.setDrawRange(0, count)
-            // geometryRef.current.setAttribute('aParticlesUv', new THREE.BufferAttribute(particlesUvArray.current, 2))
-            // console.log(geometryRef.current)
             configGeometry(geometryRef.current)
         }
 
@@ -166,15 +168,11 @@ const FBOModel = forwardRef((props, ref) => {
 
     }, [])
 
-    // useEffect(()=>{ //debug statements
-    //     if (gpuCompute.current) {
-    //         console.log(gpuCompute.current, baseParticlesTexture.current, positionArray.current, particlesVariable.current)
-    //     }
-    // },[gpuCompute, particlesVariable, baseParticlesTexture, positionArray])
-
-
-
-
+    useImperativeHandle(ref, () => ({
+        particlesVariable: particlesVariable.current,
+        rotation: pointsRef.current.rotation,
+        position: pointsRef.current.position,
+    }));
 
     useFrame((state, delta)=> {
         const elapsedTime = state.clock.getElapsedTime()
@@ -187,13 +185,8 @@ const FBOModel = forwardRef((props, ref) => {
         gpuCompute.current.compute()
 
         shaderMaterial.uniforms.uParticlesTexture.value = gpuCompute.current.getCurrentRenderTarget(particlesVariable.current).texture
+        
     })
-
-
-
-
-    
-    
 
     return (
         <>
@@ -201,7 +194,7 @@ const FBOModel = forwardRef((props, ref) => {
                 scale={0.23}
                 position-z={0}
                 position-y={-.65} 
-                ref={ref} 
+                ref={pointsRef} 
                 material={shaderMaterial} 
                 frustumCulled={false}>
                 <bufferGeometry 
