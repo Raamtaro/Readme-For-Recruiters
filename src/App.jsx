@@ -44,7 +44,12 @@ function App() {
 
   return (
     <>
-      <ReactLenis root>
+      <ReactLenis 
+        root
+        options={{
+          duration: 2.5
+        }}
+      >
         <Canvas
           style={{ width: '100%', height: '100vh', margin: 0, padding: 0, position: "fixed", zIndex: -1}}
           gl={(canvas) => {

@@ -9,7 +9,8 @@ import { PerspectiveCamera } from '@react-three/drei'
 import * as THREE from 'three'
 
 //Components
-import Model from './Model/Model'
+import FBOModel from './FBOModel/FBOModel'
+import Model from './WobbleModel/WobbleModel'
 import MagicPlane from './MagicPlane/MagicPlane'
 
 import gsap from 'gsap'
@@ -109,18 +110,6 @@ function Experience({landingActive}) {
         planeRef.current.material.uniforms.uOffset.value.y = mouse.current.targetVelocity * dir.y * 3.0
     }
 
-    // const determineParallax = (delta) => { //I'm keeping this commented out for now because moving the camera around messes with the plane Tracking. 
-    //     const parallaxCoords = {x: mouse.current.normalized.x - 0.5, y: mouse.current.normalized.y}
-    //     const parallaxX = parallaxCoords.x * 0.25
-    //     const parallaxY = -parallaxCoords.y * 0.25
-
-    //     // modelRef.current.rotation.y += (parallaxX - cameraGroupRef.current.position.x) * 5 * delta * 0.95 
-    //     // modelRef.current.rotation.x += (parallaxY - cameraGroupRef.current.position.y) * 5 * delta * 0.95 
-    // }
-
-    // useEffect(()=> { //Adding an event listener for resize here, as I'm noticing that the mouse coordinate --> Position mapping gets all messed up for the plane
-    // }, [])
-
 
     // useGSAP(()=> {
     //     gsap.to(
@@ -174,16 +163,28 @@ function Experience({landingActive}) {
         }
     }, [])
 
-    useFrame((state, delta) => {
+    // useGSAP(()=> {
 
+    //     gsap.from(
+    //         modelRef.current.position,
+    //         {
+    //             y: 10,
+    //             duration: 3.0,
+    //             ease: 'power2.inOut'
+    //         }
+    //     )
+    // }, [modelRef])
+
+    useFrame((state, delta) => {
         //Mouse stuff
         calculateMouseSpeed() 
         remapMouse()
-
+        
         //Camera Scrolling
         cameraRef.current.position.y = -scrollY / size.height * 10
         // cameraRef.current.position.y = -(scrollRef.current.value) / size.height * 10
-        
+
+        // modelRef.current.material.uniforms.uTime.value += delta       
     })
 
     return (
@@ -202,8 +203,9 @@ function Experience({landingActive}) {
             </group>
            
             <Particles />
-            <Model innerRef={modelRef}/>
+            {/* <Model innerRef={modelRef}/> */}
             <MagicPlane ref={planeRef}/>
+            <FBOModel />
         </>
 
     )

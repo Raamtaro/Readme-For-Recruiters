@@ -3,7 +3,6 @@ import React from 'react'
 import './styles/Contact.css'
 
 import linkedin from '../assets/tech_icons/LinkedIn.svg'
-import github from '../assets/tech_icons/github.svg'
 
 import { SiGithub } from "react-icons/si";
 import { MdEmail } from "react-icons/md";
@@ -13,8 +12,7 @@ function Contact() {
      * This will house the overall layout of the Contact Section
      */
     return (
-        <>
-            
+        <>           
             <footer className='contact-section'>  
                 <h2>Contact Me</h2>           
                 <div className="contact-section-flex-container">
