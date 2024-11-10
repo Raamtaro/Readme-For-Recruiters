@@ -115,23 +115,10 @@ function Experience({landingActive}) {
         planeRef.current.material.uniforms.uOffset.value.y = mouse.current.targetVelocity * dir.y * 3.0
     }
 
-
-    // useGSAP(()=> {
-    //     gsap.to(
-    //         planeRef.current.material.uniforms.uAlpha,
-    //         {
-    //             value: landingActive ? .75 : 0.0,
-    //             ease: landingActive ? 'power3.in' : 'power3.out',
-    //             duration: landingActive ? 1.5 : .5,
-    //             overwrite: true,
-    //             delay: 0.1
-    //         }
-    //     )
-    // }, [landingActive])
-
     useLenis((lenis)=> {
         scrollRef.current.velocity = lenis.velocity
-        // console.log(lenis.velocity)
+        scrollRef.current.value = lenis.scroll
+        
     })
 
     useEffect(()=> { //Mouse Event Listener
@@ -155,53 +142,22 @@ function Experience({landingActive}) {
         }
     }, [size])
 
-
-    /**
-     * NOTE: Consider replacing with useLenis() hook, as it does this with way less code and I'm already using it anyway.
-     */
-    useEffect(()=> { //Scroll Event Listener
-        const handleScroll = () => {
-            scrollRef.current.value = window.scrollY
-            // console.log(scrollRef.current.value)
-        }
-        window.addEventListener('scroll', handleScroll)
-
-        return () => {
-            window.removeEventListener('scroll', handleScroll)
-        }
-    }, [])
-
-    // useGSAP(()=> {
-
-    //     gsap.from(
-    //         modelRef.current.position,
-    //         {
-    //             y: 10,
-    //             duration: 3.0,
-    //             ease: 'power2.inOut'
-    //         }
-    //     )
-    // }, [modelRef])
-
     useFrame((state, delta) => {
         //Mouse stuff
         calculateMouseSpeed() 
         remapMouse()
         
         //Camera Scrolling
-        cameraRef.current.position.y = -scrollY / size.height * 10
+        cameraRef.current.position.y = -scrollRef.current.value / size.height * 10
         // cameraRef.current.position.y = -(scrollRef.current.value) / size.height * 10
         fboRef.current.rotation.y = mouse.current.normalizedTrail.x * 0.25
         fboRef.current.rotation.x = -mouse.current.normalizedTrail.y * 0.25
 
-        fboRef.current.particlesVariable.material.uniforms.uVelocity.value = Math.min(mouse.current.targetVelocity, 0.075)  * 3.0
+        fboRef.current.particlesVariable.material.uniforms.uVelocity.value = Math.min(mouse.current.targetVelocity, 0.075)  * 2.25
         fboRef.current.particlesVariable.material.uniforms.uVelocity.value += scrollRef.current.velocity * .05
-        mouse.current.targetVelocity *= .96
-
-        // fboRef.current.particlesVariable.material.uniforms.uFlowFieldFrequency.value = mouse.current.trail.y
-        // scrollRef.current.velocity *= .99
+        mouse.current.targetVelocity *= .98999
         fboRef.current.rotation.x += 0.1 * Math.sin(fboRef.current.rotation.y + state.clock.getElapsedTime()*.55)
-        // modelRef.current.material.uniforms.uTime.value += delta       
+              
     })
 
     return (

@@ -179,7 +179,7 @@ void main() {
         vec3 flowField = cross(simplexFlowField, curlFlowField);
         // vec3 flowField = cross(curlFlowField, simplexFlowField);
 
-        flowField = normalize(curlFlowField);
+        flowField = normalize(flowField);
         
         particle.xyz += flowField * uDeltaTime * strength * ((uFlowFieldStrength * uFlowFieldStrength + uVelocity * 5.0 * distFromParticle)/uFlowFieldStrength)*1.25;
         
