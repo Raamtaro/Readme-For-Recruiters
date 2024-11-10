@@ -1,5 +1,5 @@
 nav.portfolio-header {
-    position: fixed !important;
+    position: absolute;
 
     top: 2rem;
     right: 0;

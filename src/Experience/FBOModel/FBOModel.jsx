@@ -14,7 +14,7 @@ const FBOModel = forwardRef((props, ref) => {
 
     const {gl, size} = useThree()
 
-    const model = useGLTF('./tangentedMask.glb')
+    const model = useGLTF('./female.glb')
     
 
     /**
@@ -71,9 +71,9 @@ const FBOModel = forwardRef((props, ref) => {
         particlesVariable.current.material.uniforms.uTime = new THREE.Uniform(0)
         particlesVariable.current.material.uniforms.uDeltaTime = new THREE.Uniform(0)
         particlesVariable.current.material.uniforms.uBase = new THREE.Uniform(baseParticlesTexture.current)
-        particlesVariable.current.material.uniforms.uFlowFieldInfluence = new THREE.Uniform(0.623)
-        particlesVariable.current.material.uniforms.uFlowFieldStrength = new THREE.Uniform(1.2)
-        particlesVariable.current.material.uniforms.uFlowFieldFrequency = new THREE.Uniform(0.585)
+        particlesVariable.current.material.uniforms.uFlowFieldInfluence = new THREE.Uniform(0.573)
+        particlesVariable.current.material.uniforms.uFlowFieldStrength = new THREE.Uniform(2.0)
+        particlesVariable.current.material.uniforms.uFlowFieldFrequency = new THREE.Uniform(0.4379)
         particlesVariable.current.material.uniforms.uVelocity = new THREE.Uniform(0.0)
         particlesVariable.current.material.uniforms.uUpForce = new THREE.Uniform(0.0)
         particlesVariable.current.material.uniforms.uMouse = new THREE.Uniform(new THREE.Vector2(-10.0, 10.0))
@@ -128,7 +128,8 @@ const FBOModel = forwardRef((props, ref) => {
                 },
 
                 vertexShader: vertexShader,
-                fragmentShader: fragmentShader
+                fragmentShader: fragmentShader,
+                transparent: true
             }
         )
     }, [size])
@@ -192,8 +193,9 @@ const FBOModel = forwardRef((props, ref) => {
         <>
             <points 
                 scale={0.23}
+                position-y={0.2}
                 position-z={0}
-                position-y={-.65} 
+                
                 ref={pointsRef} 
                 material={shaderMaterial} 
                 frustumCulled={false}>

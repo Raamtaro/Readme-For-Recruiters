@@ -79,8 +79,8 @@ function Experience({landingActive}) {
         mouse.current.targetVelocity -= mouse.current.ease * (mouse.current.targetVelocity - mouse.current.velocity) //This should pretty much be the same between normalized and 0 to 1
 
         // //0 -> 1 trail - Might not need this and will delete to save cpu. I'm keeping for now as I may or may not include a ShaderPass with some mouse fx...
-        // mouse.current.trail.x -= mouse.current.ease * (mouse.current.trail.x - mouse.current./current.x)
-        // mouse.current.trail.y -= mouse.current.ease * (mouse.current.trail.y - mouse.current./current.y)
+        mouse.current.trail.x -= mouse.current.ease * (mouse.current.trail.x - mouse.current.current.x)
+        mouse.current.trail.y -= mouse.current.ease * (mouse.current.trail.y - mouse.current.current.y)
 
         //Normalized Trail
         mouse.current.normalizedTrail.x -= mouse.current.ease * (mouse.current.normalizedTrail.x - mouse.current.normalized.x)
@@ -138,8 +138,8 @@ function Experience({landingActive}) {
         const handleMouseMove = (event) => {
 
             //0 -> 1 coordinates, for parallax + post stuff
-            mouse.current.normalized.x = event.clientX / size.width
-            mouse.current.normalized.y = event.clientY / size.height // -1 * -1 to convert to event.clientY / size.height      
+            mouse.current.current.x = event.clientX / size.width
+            mouse.current.current.y = event.clientY / size.height // -1 * -1 to convert to event.clientY / size.height      
 
             //Normalized Coordinates - -1 to 1 
             mouse.current.normalized.x = (event.clientX / size.width) * 2 - 1
@@ -192,11 +192,13 @@ function Experience({landingActive}) {
         cameraRef.current.position.y = -scrollY / size.height * 10
         // cameraRef.current.position.y = -(scrollRef.current.value) / size.height * 10
         fboRef.current.rotation.y = mouse.current.normalizedTrail.x * 0.25
-        fboRef.current.rotation.x = -mouse.current.normalizedTrail.y * 0.15
+        fboRef.current.rotation.x = -mouse.current.normalizedTrail.y * 0.25
 
-        fboRef.current.particlesVariable.material.uniforms.uVelocity.value = Math.min(mouse.current.targetVelocity, 0.075)
+        fboRef.current.particlesVariable.material.uniforms.uVelocity.value = Math.min(mouse.current.targetVelocity, 0.075)  * 3.0
         fboRef.current.particlesVariable.material.uniforms.uVelocity.value += scrollRef.current.velocity * .05
         mouse.current.targetVelocity *= .96
+
+        // fboRef.current.particlesVariable.material.uniforms.uFlowFieldFrequency.value = mouse.current.trail.y
         // scrollRef.current.velocity *= .99
         fboRef.current.rotation.x += 0.1 * Math.sin(fboRef.current.rotation.y + state.clock.getElapsedTime()*.55)
         // modelRef.current.material.uniforms.uTime.value += delta       

@@ -1,6 +1,7 @@
 import React, {useState, useRef, useEffect} from 'react'
 
 import './App.css'
+
 import Landing from './Landing/Landing'
 import Skills from './Skills/Skills'
 import Projects from './Projects/Projects'
