@@ -42,7 +42,7 @@ function Skills() {
             skillCards,
             {
                 opacity: 1,
-                duration: .5,
+                duration: 1.25,
                 ease: 'power3.out',
                 stagger: .25,
                 scrollTrigger: {

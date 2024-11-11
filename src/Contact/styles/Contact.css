@@ -1,6 +1,8 @@
 .contact-section {
-    min-height: 100vh;
+    position: fixed;
     padding: 2rem;
+    bottom: 0;
+    right: 0;
 
     font-family: 'Le murmure', sans-serif;
     font-size: 2rem;
@@ -19,7 +21,7 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    
     justify-content: space-between;
 }
 
@@ -36,12 +38,12 @@
 }
 
 .hover-item {
-    display: flex;
+    padding-bottom: 1rem;
     gap: .75rem;
 }
 
 a {
-    color: rgb(230, 251, 243);
+    color: rgb(255, 255, 255);
     text-decoration: none;
 }
 

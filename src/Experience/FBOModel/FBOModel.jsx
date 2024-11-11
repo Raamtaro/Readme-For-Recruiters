@@ -15,7 +15,7 @@ const FBOModel = forwardRef((props, ref) => {
     const {gl, size} = useThree()
 
     const model = useGLTF('./femaleOneHundredThousand.glb')
-    
+    // const model = useGLTF('./ogFemale.glb')
 
     /**
      * Base Parameters for the GPGPU Computation
@@ -71,7 +71,7 @@ const FBOModel = forwardRef((props, ref) => {
         particlesVariable.current.material.uniforms.uTime = new THREE.Uniform(0)
         particlesVariable.current.material.uniforms.uDeltaTime = new THREE.Uniform(0)
         particlesVariable.current.material.uniforms.uBase = new THREE.Uniform(baseParticlesTexture.current)
-        particlesVariable.current.material.uniforms.uFlowFieldInfluence = new THREE.Uniform(0.573)
+        particlesVariable.current.material.uniforms.uFlowFieldInfluence = new THREE.Uniform(0.773)
         particlesVariable.current.material.uniforms.uFlowFieldStrength = new THREE.Uniform(2.0)
         particlesVariable.current.material.uniforms.uFlowFieldFrequency = new THREE.Uniform(0.2379)
         particlesVariable.current.material.uniforms.uVelocity = new THREE.Uniform(0.0)
