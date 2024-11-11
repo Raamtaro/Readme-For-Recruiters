@@ -50,6 +50,7 @@ void main()
     vUv = uv;
 
     vColor = vec3(1.0);
+    // vColor = particle.xyz;
     
 
     vNormal = modelNormal;
