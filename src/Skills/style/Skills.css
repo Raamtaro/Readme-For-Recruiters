@@ -28,6 +28,7 @@ li>svg {
 .skill-section-item {
     padding-bottom: 4rem;
     width: 400px;
+    opacity: 0;
 
 }
 

@@ -122,7 +122,7 @@ vec3 curl(float	x,	float	y,	float	z)
 
 void main() {
 
-    float time = uTime * 0.2;
+    float time = uTime * 0.1;
 
     vec2 uv = gl_FragCoord.xy / resolution.xy;
     vec4 particle = texture(uParticles, uv);
@@ -183,7 +183,7 @@ void main() {
         
         particle.xyz += flowField * uDeltaTime * strength * ((uFlowFieldStrength * uFlowFieldStrength + uVelocity * 5.0 * distFromParticle)/uFlowFieldStrength)*1.25;
         
-        particle.a += uDeltaTime * 0.3;
+        particle.a += uDeltaTime * 0.0075;
 
     }
 
