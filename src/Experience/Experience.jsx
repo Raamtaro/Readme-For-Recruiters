@@ -19,6 +19,8 @@ import MagicPlane from './MagicPlane/MagicPlane'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 
+// import { useDarkMode } from './useDarkMode'
+
 gsap.registerPlugin(useGSAP)
 
 
@@ -26,6 +28,8 @@ gsap.registerPlugin(useGSAP)
 // extend({ OrbitControls: OrbitControls }) //can be rewritten as below because name is same
 extend({ OrbitControls })
 function Experience({landingActive}) {
+
+    // const isDarkMode = useDarkMode()
 
 
     /**
@@ -141,6 +145,13 @@ function Experience({landingActive}) {
             window.removeEventListener('mousemove', handleMouseMove)
         }
     }, [size])
+
+    // useEffect(() => {
+    //     console.log(fboRef.current.pointsRef.material.uniforms.uColor.value)
+
+    //     fboRef
+
+    // }, [isDarkMode])
 
     useFrame((state, delta) => {
         //Mouse stuff

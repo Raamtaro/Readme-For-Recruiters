@@ -5,6 +5,7 @@ uniform vec3 uColor;
 uniform vec3 uLightColor;
 uniform vec3 uShadowColor;
 uniform vec2 uMouse;
+// uniform vec3 uColor;
 
 
 attribute vec2 aParticlesUv;
@@ -49,7 +50,7 @@ void main()
     // Varyings
     vUv = uv;
 
-    vColor = vec3(1.0);
+    vColor = uColor;
     // vColor = particle.xyz;
     
 

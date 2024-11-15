@@ -8,11 +8,15 @@ import gpgpuShader from './shaders/gpgpu/particles.glsl'
 import vertexShader from './shaders/particles/vertex.glsl'
 import fragmentShader from './shaders/particles/fragment.glsl'
 
+import { useDarkMode } from '../useDarkMode'
+
 import * as THREE from 'three'
 
 const FBOModel = forwardRef((props, ref) => {
 
     const {gl, size} = useThree()
+
+    const isDarkMode = useDarkMode()
 
     const model = useGLTF('./femaleOneHundredThousand.glb')
     // const model = useGLTF('./ogFemale.glb')
@@ -123,6 +127,7 @@ const FBOModel = forwardRef((props, ref) => {
                     uParticlesTexture: new THREE.Uniform(),
                     uMouse: new THREE.Uniform(new THREE.Vector2()),
                     uAlpha: new THREE.Uniform(0.0),
+                    uColor: {value: isDarkMode ? new THREE.Color('#ffffff') : new THREE.Color('#141414')}
 
 
                 },
@@ -132,7 +137,9 @@ const FBOModel = forwardRef((props, ref) => {
                 transparent: true
             }
         )
-    }, [size])
+    }, [size, isDarkMode])
+
+
 
     useEffect(()=> {
 
@@ -173,6 +180,7 @@ const FBOModel = forwardRef((props, ref) => {
         particlesVariable: particlesVariable.current,
         rotation: pointsRef.current.rotation,
         position: pointsRef.current.position,
+        pointsRef: pointsRef.current
     }));
 
     useFrame((state, delta)=> {
