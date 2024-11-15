@@ -95,7 +95,11 @@ function Title({title, skills, description, links}) {
             <p style={{
               margin: 0
             }}>
-              {description}
+              {description.map((desc, index) => (
+                <p key={index} style={{ marginBottom: '1em' }}>
+                  {desc}
+                </p>
+              ))}
             </p>
           </div>
         </DialogPanel>
